@@ -7,7 +7,7 @@ A multilingual [Next.js](https://nextjs.org/) blog powered by [Notion's Public A
 - **Notion as CMS**: Write and manage your blog content in Notion
 - **Multilingual Support**: Built-in support for 6 languages (Portuguese, English, Spanish, French, Italian, Japanese)
 - **AI-Powered Translation**: Automatically translate your Portuguese posts to 5 other languages using Claude API
-- **Locale-based Routing**: Separate URLs for each language (`/en`, `/es`, `/fr`, `/it`, `/ja`, `/pt-BR`)
+- **Locale-based Routing**: Separate URLs for each language (`/en`, `/es`, `/fr`, `/it`, `/ja`, `/pt-br`)
 - **One-Command Translation**: Translate individual posts or your entire blog with a single command
 - **Smart Duplicate Detection**: Automatically skips posts that are already translated
 
@@ -29,7 +29,7 @@ Follow Notion's [getting started guide](https://developers.notion.com/docs/getti
 - **Property Name** (Title): Post title
 - **Slug** (Rich Text): URL slug
 - **Date** (Date): Publication date
-- **Locale** (Select): Language - options: `pt-BR`, `en`, `es`, `fr`, `it`, `ja`
+- **Locale** (Select): Language - options: `pt-br`, `en`, `es`, `fr`, `it`, `ja`
 - **Published** (Checkbox): Publication status
 - **Cover** (File): Cover image (optional)
 
@@ -99,7 +99,7 @@ Automatically translates all published Portuguese posts that don't have translat
 
 ### How It Works
 
-1. **Write in Portuguese**: Create your blog post in Notion with `Locale` set to `pt-BR`
+1. **Write in Portuguese**: Create your blog post in Notion with `Locale` set to `pt-br`
 2. **Run Translation**: Execute `npm run translate <page-url>`
 3. **AI Translation**: Claude translates your content while preserving:
    - Tone and style
@@ -221,7 +221,7 @@ The workflow (`.github/workflows/deploy-netlify.yml`) will automatically deploy 
 If translations fail:
 1. Check your `ANTHROPIC_API_KEY` is valid
 2. Ensure Notion database has correct property names (case-sensitive)
-3. Verify the post has `Locale` set to `pt-BR`
+3. Verify the post has `Locale` set to `pt-br`
 4. See [TRANSLATION-GUIDE.md](TRANSLATION-GUIDE.md) for detailed troubleshooting
 
 ### Common Errors

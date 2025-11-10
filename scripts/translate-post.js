@@ -93,7 +93,7 @@ async function translatePost(pageIdOrUrl) {
     // Extract page info
     const title = originalPage.properties['Property Name']?.title?.[0]?.plain_text;
     const slug = originalPage.properties.Slug?.rich_text?.[0]?.text?.content;
-    const locale = originalPage.properties.Locale?.select?.name || 'pt-BR';
+    const locale = originalPage.properties.Locale?.select?.name || 'pt-br';
 
     if (!title) {
       throw new Error('Could not find page title. Make sure the page has a "Property Name" title field.');
@@ -109,8 +109,8 @@ async function translatePost(pageIdOrUrl) {
     console.log(`  Blocks: ${originalBlocks.length}`);
 
     // Check if this is a Portuguese post
-    if (locale !== 'pt-BR') {
-      console.log(`\n⚠️  Warning: This post is marked as "${locale}", not "pt-BR".`);
+    if (locale !== 'pt-br') {
+      console.log(`\n⚠️  Warning: This post is marked as "${locale}", not "pt-br".`);
       console.log('  Translations will still be created, but the source is expected to be Portuguese.');
     }
 

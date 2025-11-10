@@ -55,7 +55,7 @@ npm run translate abc123def456...
 
 ✓ Found: "Minha Primeira História"
   Slug: minha-primeira-historia
-  Locale: pt-BR
+  Locale: pt-br
   Blocks: 15
 
 🔍 Checking for existing translations...
@@ -82,7 +82,7 @@ npm run translate-all
 ```
 
 **What it does:**
-- Finds all published Portuguese posts (Locale = pt-BR)
+- Finds all published Portuguese posts (Locale = pt-br)
 - Checks which translations are missing
 - Translates only the missing ones
 - Skips posts that are already fully translated
@@ -112,7 +112,7 @@ npm run translate-all
    - **Property Name** (title): Your post title
    - **Slug**: URL-friendly slug
    - **Date**: Publication date
-   - **Locale**: `pt-BR`
+   - **Locale**: `pt-br`
    - **Published**: `true`
    - **Cover** (optional): Cover image
 3. Copy the page URL
@@ -178,7 +178,7 @@ The system uses Claude Haiku (fast, cheap, high-quality) and is instructed to:
 
 ### Error: "Could not find property with name or id: locale"
 
-Make sure your Notion database has a "Locale" property (Select type) with options: `pt-BR`, `en`, `es`, `fr`, `it`, `ja`
+Make sure your Notion database has a "Locale" property (Select type) with options: `pt-br`, `en`, `es`, `fr`, `it`, `ja`
 
 ### Error: "Could not extract page ID"
 

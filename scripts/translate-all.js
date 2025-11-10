@@ -22,7 +22,7 @@ async function translateAllPosts() {
     console.log('\n🔍 Fetching all Portuguese posts...\n');
 
     // Get all published Portuguese posts
-    const posts = await getDatabase('pt-BR');
+    const posts = await getDatabase('pt-br');
 
     if (!posts || posts.length === 0) {
       console.log('No Portuguese posts found.');
