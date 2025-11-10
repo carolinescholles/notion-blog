@@ -40,11 +40,9 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children, params }) {
-  const locale = params?.locale || 'pt-BR';
-
+export default function RootLayout({ children }) {
   return (
-    <html lang={locale}>
+    <html lang="pt-BR">
       <body>
         {children}
       </body>
