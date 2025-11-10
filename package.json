@@ -8,15 +8,20 @@
     "start": "next start",
     "lint": "next lint --fix",
     "predeploy": "yarn build && vercel",
-    "deploy": "vercel --prod"
+    "deploy": "vercel --prod",
+    "translate": "node scripts/translate-post.js",
+    "translate-all": "node scripts/translate-all.js"
   },
+  "type": "module",
   "author": "Samuel Kraft <samuelkraft@me.com> (https://github.com/samuelkraft)",
   "contributors": [
     "Samuel Kraft <samuelkraft@me.com> (https://github.com/samuelkraft)",
     "Adam Beleko <bossbele@larven.io> (https://github.com/BossBele)"
   ],
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.68.0",
     "@notionhq/client": "^2.2.3",
+    "dotenv": "^17.2.3",
     "next": "^13.4.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
