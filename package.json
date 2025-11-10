@@ -12,7 +12,6 @@
     "translate": "node scripts/translate-post.js",
     "translate-all": "node scripts/translate-all.js"
   },
-  "type": "module",
   "author": "Samuel Kraft <samuelkraft@me.com> (https://github.com/samuelkraft)",
   "contributors": [
     "Samuel Kraft <samuelkraft@me.com> (https://github.com/samuelkraft)",
