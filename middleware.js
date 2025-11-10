@@ -1,35 +1,22 @@
 import { NextResponse } from 'next/server';
 import { locales, defaultLocale } from './lib/i18n';
 
-const localeMap = locales.reduce((acc, locale) => {
-  acc[locale.toLowerCase()] = locale;
-  return acc;
-}, {});
-
 export function middleware(request) {
-  const { pathname } = request.nextUrl;
-  const segments = pathname.split('/').filter(Boolean);
-  const currentLocaleSegment = segments[0];
+  const pathname = request.nextUrl.pathname;
 
-  if (currentLocaleSegment) {
-    const matchedLocale = localeMap[currentLocaleSegment.toLowerCase()];
+  // Check if the pathname already has a locale
+  const pathnameHasLocale = locales.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  );
 
-    if (matchedLocale) {
-      // Canonicalize locale casing to avoid duplicate prefixes like /pt-BR/pt-br/...
-      if (matchedLocale !== currentLocaleSegment) {
-        segments[0] = matchedLocale;
-        const hasTrailingSlash = pathname.endsWith('/') && pathname !== '/';
-        const canonicalPath = `/${segments.join('/')}${hasTrailingSlash ? '/' : ''}`;
-        request.nextUrl.pathname = canonicalPath || '/';
-        return NextResponse.redirect(request.nextUrl);
-      }
-
-      return NextResponse.next();
-    }
+  // If locale is present, continue without redirect
+  if (pathnameHasLocale) {
+    return NextResponse.next();
   }
 
   // Redirect to default locale if no locale in pathname
-  request.nextUrl.pathname = `/${defaultLocale}${pathname}`;
+  const locale = defaultLocale;
+  request.nextUrl.pathname = `/${locale}${pathname}`;
   return NextResponse.redirect(request.nextUrl);
 }
 
