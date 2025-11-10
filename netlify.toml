@@ -1,0 +1,59 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_FLAGS = "--legacy-peer-deps"
+
+# Redirect default locale
+[[redirects]]
+  from = "/*"
+  to = "/pt-BR/:splat"
+  status = 200
+  conditions = {Language = ["pt-BR"]}
+
+# Handle Next.js internal paths
+[[redirects]]
+  from = "/_next/*"
+  to = "/_next/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/api/*"
+  to = "/api/:splat"
+  status = 200
+
+# Handle locale-based routing
+[[redirects]]
+  from = "/en/*"
+  to = "/en/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/es/*"
+  to = "/es/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/fr/*"
+  to = "/fr/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/it/*"
+  to = "/it/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/ja/*"
+  to = "/ja/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/pt-BR/*"
+  to = "/pt-BR/:splat"
+  status = 200

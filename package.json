@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --fix",
-    "predeploy": "yarn build && vercel",
-    "deploy": "vercel --prod",
+    "predeploy": "npm run build",
+    "deploy": "netlify deploy --prod",
     "translate": "node scripts/translate-post.js",
     "translate-all": "node scripts/translate-all.js"
   },

@@ -11,7 +11,7 @@ A multilingual [Next.js](https://nextjs.org/) blog powered by [Notion's Public A
 - **One-Command Translation**: Translate individual posts or your entire blog with a single command
 - **Smart Duplicate Detection**: Automatically skips posts that are already translated
 
-__Demo:__ [https://notion-blog-nextjs-coral.vercel.app](https://notion-blog-nextjs-coral.vercel.app)
+__Demo:__ [Your Netlify URL here]
 
 __Original Documentation:__ [https://samuelkraft.com/blog/building-a-notion-blog-with-public-api](https://samuelkraft.com/blog/building-a-notion-blog-with-public-api)
 
@@ -157,24 +157,62 @@ notion-blog/
 
 ## Deployment
 
-### Deploy to Vercel
+### Deploy to Netlify
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fsamuelkraft%2Fnotion-blog-nextjs&env=NOTION_TOKEN,NOTION_DATABASE_ID,ANTHROPIC_API_KEY&envDescription=Add%20your%20Notion%20and%20Anthropic%20API%20credentials&envLink=https%3A%2F%2Fdevelopers.notion.com%2Fdocs%2Fgetting-started&project-name=notion-blog-nextjs&repo-name=notion-blog-nextjs&demo-title=Notion%20Blog%20with%20AI%20Translation&demo-description=Multilingual%20Next.js%20blog%20powered%20by%20Notion%20with%20AI%20translation)
+#### Option 1: Deploy via Netlify UI (Recommended)
 
-**Environment Variables Required:**
-- `NOTION_TOKEN`
-- `NOTION_DATABASE_ID`
-- `ANTHROPIC_API_KEY`
+1. **Push to GitHub**: Push your code to a GitHub repository
+2. **Connect to Netlify**:
+   - Log in to [Netlify](https://netlify.com)
+   - Click "Add new site" → "Import an existing project"
+   - Choose GitHub and select your repository
+3. **Configure Build Settings**:
+   - Build command: `npm run build`
+   - Publish directory: `.next`
+   - Install the Next.js plugin (Netlify will prompt you)
+4. **Add Environment Variables** (Settings → Environment Variables):
+   - `NOTION_TOKEN` - Your Notion integration token
+   - `NOTION_DATABASE_ID` - Your Notion database ID
+   - `ANTHROPIC_API_KEY` - Your Anthropic API key
+5. **Deploy**: Click "Deploy site"
 
-### GitHub Actions
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start)
 
-Deployment workflows are located under `.github/workflows/` in this repository.
+#### Option 2: Deploy via Netlify CLI
 
-To use the actions, rename them to remove the `.txt` extensions, then add these GitHub Action Secrets (Settings → Secrets → Actions):
-1. **ORG_ID** - Vercel account ID found in account Settings
-2. **PROJECT_ID** - Vercel project ID found in project Settings
-3. **VERCEL_TOKEN** - Vercel token created in Settings → Tokens
-4. **GH_TOKEN** - GitHub token (optional)
+```bash
+# Install Netlify CLI
+npm install -g netlify-cli
+
+# Login to Netlify
+netlify login
+
+# Initialize and deploy
+netlify init
+netlify deploy --prod
+```
+
+### Automatic Deployments with GitHub Actions
+
+This repository includes a GitHub Actions workflow for automatic deployment to Netlify.
+
+**Setup GitHub Actions** (Settings → Secrets → Actions):
+
+1. **NETLIFY_AUTH_TOKEN**
+   - Go to Netlify → User Settings → Applications → Personal access tokens
+   - Generate a new token and copy it
+
+2. **NETLIFY_SITE_ID**
+   - Go to your Netlify site → Site settings → General
+   - Copy the "Site ID" (under Site information)
+
+3. **NOTION_TOKEN** - Your Notion integration token
+
+4. **NOTION_DATABASE_ID** - Your Notion database ID
+
+5. **ANTHROPIC_API_KEY** - Your Anthropic API key
+
+The workflow (`.github/workflows/deploy-netlify.yml`) will automatically deploy your site when you push to the `master` branch.
 
 ## Troubleshooting
 
