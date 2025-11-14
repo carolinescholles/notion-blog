@@ -4,6 +4,25 @@ import Link from 'next/link';
 import Text from '../text';
 import styles from '../../styles/post.module.css';
 
+function convertToEmbedUrl(url) {
+  // Handle YouTube URLs
+  const youtubeRegex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+  const youtubeMatch = url.match(youtubeRegex);
+  if (youtubeMatch && youtubeMatch[1]) {
+    return `https://www.youtube-nocookie.com/embed/${youtubeMatch[1]}`;
+  }
+
+  // Handle Vimeo URLs
+  const vimeoRegex = /vimeo\.com\/(?:.*\/)?(\d+)/;
+  const vimeoMatch = url.match(vimeoRegex);
+  if (vimeoMatch && vimeoMatch[1]) {
+    return `https://player.vimeo.com/video/${vimeoMatch[1]}`;
+  }
+
+  // Return original URL if no match (could be an embed URL already)
+  return url;
+}
+
 export function renderBlock(block) {
   const { type, id } = block;
   const value = block[type];
@@ -154,6 +173,44 @@ export function renderBlock(block) {
     }
     case 'column': {
       return <div>{block.children.map((child) => renderBlock(child))}</div>;
+    }
+    case 'video': {
+      const rawSrc = value.type === 'external' ? value.external.url : value.file.url;
+      const src = convertToEmbedUrl(rawSrc);
+      const caption = value.caption ? value.caption[0]?.plain_text : '';
+      return (
+        <figure>
+          <div className={styles.video}>
+            <iframe
+              src={src}
+              title={caption || 'Embedded video'}
+              allowFullScreen
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            />
+          </div>
+          {caption && <figcaption>{caption}</figcaption>}
+        </figure>
+      );
+    }
+    case 'embed': {
+      const rawSrc = value.url;
+      const src = convertToEmbedUrl(rawSrc);
+      const caption = value.caption ? value.caption[0]?.plain_text : '';
+      return (
+        <figure>
+          <div className={styles.video}>
+            <iframe
+              src={src}
+              title={caption || 'Embedded content'}
+              allowFullScreen
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            />
+          </div>
+          {caption && <figcaption>{caption}</figcaption>}
+        </figure>
+      );
     }
     default:
       return `❌ Unsupported block (${
