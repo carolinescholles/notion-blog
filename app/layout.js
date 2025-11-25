@@ -2,26 +2,26 @@ import '../styles/globals.css';
 
 export const metadata = {
   title: {
-    default: 'Made in Brazil - Histórias e reflexões',
-    template: '%s | Made in Brazil',
+    default: 'Reinventing Home',
+    template: '%s | Reinventing Home',
   },
-  description: 'Blog pessoal com histórias e reflexões sobre a vida, cultura e experiências no Brasil',
+  description: 'My path to unlearning, releasing, and finding the courage to begin again as a digital nomad from south Brazil.',
   metadataBase: new URL('https://madeinbrazil.com'),
-  keywords: ['blog', 'histórias', 'reflexões', 'brasil', 'made in brazil', 'cultura brasileira', 'experiências'],
-  authors: [{ name: 'Made in Brazil' }],
-  creator: 'Made in Brazil',
-  publisher: 'Made in Brazil',
+  keywords: ['blog', 'digital nomad', 'south brazil', 'personal growth', 'unlearning', 'courage', 'nomadic life'],
+  authors: [{ name: 'Caroline Scholles' }],
+  creator: 'Caroline Scholles',
+  publisher: 'Reinventing Home',
   openGraph: {
-    title: 'Made in Brazil - Histórias e reflexões',
-    description: 'Blog pessoal com histórias e reflexões sobre a vida, cultura e experiências no Brasil',
+    title: 'Reinventing Home',
+    description: 'My path to unlearning, releasing, and finding the courage to begin again as a digital nomad from south Brazil.',
     type: 'website',
     locale: 'pt_BR',
-    siteName: 'Made in Brazil',
+    siteName: 'Reinventing Home',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Made in Brazil - Histórias e reflexões',
-    description: 'Blog pessoal com histórias e reflexões sobre a vida, cultura e experiências no Brasil',
+    title: 'Reinventing Home',
+    description: 'My path to unlearning, releasing, and finding the courage to begin again as a digital nomad from south Brazil.',
     creator: '@madeinbrazil',
   },
   robots: {

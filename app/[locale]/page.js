@@ -12,11 +12,11 @@ export async function generateMetadata({ params }) {
   const t = getTranslations(locale);
 
   return {
-    title: `Made in Brazil - ${t.subtitle}`,
-    description: `Blog pessoal com histórias e reflexões sobre a vida, cultura e experiências no Brasil`,
+    title: `Reinventing Home - ${t.subtitle}`,
+    description: t.description,
     openGraph: {
-      title: `Made in Brazil - ${t.subtitle}`,
-      description: `Blog pessoal com histórias e reflexões sobre a vida, cultura e experiências no Brasil`,
+      title: `Reinventing Home - ${t.subtitle}`,
+      description: t.description,
       locale: locale,
     },
   };
@@ -36,7 +36,7 @@ export default async function Page({ params }) {
       <main className={styles.container}>
         <header className={styles.header}>
           <h1 className={styles.logo}>
-            MADE IN BRAZIL
+            REINVENTING HOME
           </h1>
           <p className={styles.subtitle}>
             {t.subtitle}
